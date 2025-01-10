@@ -7,11 +7,14 @@ import (
 )
 
 func main() {
-	valor1 := GenerarPDF_Bytes()
-	valor2 := GenerarPDF_Base64()
 
-	//println("PDF generado con tamaño: %d bytes\n", len(valor1))
-	//ConexionDB()
+	db := ConexionDB()
+	defer db.Close()
+
+	// Realizar la consulta
+	resultados := ConsultaProformas(db)
+
+	valor1 := GenerarPDF_Bytes(resultados)
 
 	app := fiber.New()
 	// Ruta para retornar bytes
@@ -22,10 +25,10 @@ func main() {
 	})
 
 	// Ruta para retornar base64
-	app.Get("/base64", func(c *fiber.Ctx) error {
+	// app.Get("/base64", func(c *fiber.Ctx) error {
 
-		return c.SendString(valor2)
-	})
+	// 	return c.SendString(valor2)
+	// })
 
 	log.Fatal(app.Listen(":3000"))
 }

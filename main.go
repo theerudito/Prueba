@@ -12,9 +12,11 @@ func main() {
 	defer db.Close()
 
 	// Realizar la consulta
-	resultados := ConsultaProformas(db)
+	consulta := ConsultaProformas(db)
 
-	valor1 := GenerarPDF_Bytes(resultados)
+	valor1 := GenerarPDF_Bytes(consulta)
+
+	valor2 := GenerarPDF_Base64(consulta)
 
 	app := fiber.New()
 	// Ruta para retornar bytes
@@ -24,11 +26,11 @@ func main() {
 		return c.Send(valor1)
 	})
 
-	// Ruta para retornar base64
-	// app.Get("/base64", func(c *fiber.Ctx) error {
+	//Ruta para retornar base64
+	app.Get("/base64", func(c *fiber.Ctx) error {
 
-	// 	return c.SendString(valor2)
-	// })
+		return c.SendString(valor2)
+	})
 
 	log.Fatal(app.Listen(":3000"))
 }

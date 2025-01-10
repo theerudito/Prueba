@@ -26,8 +26,8 @@ func GenerarPDF(detalle []ProformaDetalle) PDFResult {
 
 	// Encabezado de la tabla
 	pdf.SetFont("Arial", "B", 10)
-	pdf.CellFormat(20, 10, "Emisión", "1", 0, "C", false, 0, "")
-	pdf.CellFormat(25, 10, "Código", "1", 0, "C", false, 0, "")
+	pdf.CellFormat(20, 10, "Emision", "1", 0, "C", false, 0, "")
+	pdf.CellFormat(25, 10, "Codigo", "1", 0, "C", false, 0, "")
 	pdf.CellFormat(50, 10, "Cliente", "1", 0, "C", false, 0, "")
 	pdf.CellFormat(30, 10, "Producto", "1", 0, "C", false, 0, "")
 	pdf.CellFormat(20, 10, "Medida", "1", 0, "C", false, 0, "")

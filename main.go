@@ -14,22 +14,22 @@ func main() {
 	// Realizar la consulta
 	consulta := ConsultaProformas(db)
 
-	valor1 := GenerarPDF_Bytes(consulta)
+	bytesPDF := GenerarPDF(consulta)
 
-	valor2 := GenerarPDF_Base64(consulta)
+	base64PDF := GenerarPDF(consulta)
 
 	app := fiber.New()
 	// Ruta para retornar bytes
 	app.Get("/bytes", func(c *fiber.Ctx) error {
 		c.Set("Content-Type", "application/pdf")
 		c.Set("Content-Disposition", "inline; filename=\"document.pdf\"")
-		return c.Send(valor1)
+		return c.Send(bytesPDF.Bytes)
 	})
 
 	//Ruta para retornar base64
 	app.Get("/base64", func(c *fiber.Ctx) error {
 
-		return c.SendString(valor2)
+		return c.SendString(base64PDF.Base64)
 	})
 
 	log.Fatal(app.Listen(":3000"))

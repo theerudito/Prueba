@@ -1,0 +1,11 @@
+iniciar proyecto en go
+go mod init Prueba
+
+instalar el driver de mysql
+go get -u github.com/go-sql-driver/mysql
+
+instalar el paquete de pfd
+go get -u github.com/jung-kurt/gofpdf
+
+instalar el paquete de fiver
+go get github.com/gofiber/fiber/v2

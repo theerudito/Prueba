@@ -6,7 +6,7 @@ import (
 	"github.com/jung-kurt/gofpdf"
 )
 
-func generarPDF() {
+func GenerarPDF() {
 	// Crear una instancia de PDF
 	pdf := gofpdf.New("P", "mm", "A4", "")
 

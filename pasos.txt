@@ -9,3 +9,18 @@ go get -u github.com/jung-kurt/gofpdf
 
 instalar el paquete de fiver
 go get github.com/gofiber/fiber/v2
+
+instalar el paquete de gorm
+go get -u gorm.io/gorm
+
+instalar el paquete de gorm para mysql
+go get -u gorm.io/driver/mysql
+
+instalar el paquete de jwt
+go get -u github.com/dgrijalva/jwt-go
+
+instalar el paquete de bcrypt
+go get -u golang.org/x/crypto/bcrypt
+
+instalar el paquete de dotenv
+go get -u github.com/joho/godotenv

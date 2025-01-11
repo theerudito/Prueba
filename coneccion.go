@@ -4,13 +4,24 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 )
 
 func ConexionDB() *sql.DB {
-	// Datos de conexión
-	dsn := "root:Alfayomega1232*@tcp(127.0.0.1:5588)/1010269579_db0000000001"
+
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Error al cargar el archivo .env: %v", err)
+	}
+
+	// Nombre de la base de datos
+	dbName := os.Getenv("dbHome")
+
+	// Nombre connexión a la base de datos
+	dsn := fmt.Sprintf("root:Alfayomega1232*@tcp(127.0.0.1:5588)/%s", dbName)
 
 	// Conexión a la base de datos
 	db, err := sql.Open("mysql", dsn)
